@@ -15,7 +15,7 @@ contract BattleFieldFirstCollection {
     uint256 public constant MAX_SUPPLY = 100;
     uint256 public constant MAX_MINT_PER_ADDRESS = 2;
     uint256 public constant PAYING_ID = 1;
-    uint256 public constant PRICE = 100_000;
+    uint256 public constant PRICE = 100_000 * 1e18;
 
     uint256 public immutable startTime;
     uint256 public immutable duration;

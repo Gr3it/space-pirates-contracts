@@ -25,6 +25,10 @@ describe("SpacePiratesBattleFieldMint", () => {
       "0x9a04e0fe6fc58d8074e1248913ba8264db0172239ac5ac3abda2b5e4a8a27af9",
       ownerAddress
     );
+    await tokensContract.grantRole(
+      "0x79c4f19595d0f36d8c94f6d809decda230ff568defdd4e85ca989d8c603c2efb",
+      ownerAddress
+    );
   });
   beforeEach(async () => {
     const timestamp = await getTimeStamp();
@@ -48,13 +52,15 @@ describe("SpacePiratesBattleFieldMint", () => {
     ); //burn role
 
     await tokensContract.setApprovalForAll(mintContract.address, true);
+
+    await tokensContract.burn(ownerAddress, 1, await tokensContract.balanceOf(ownerAddress, 1))
   });
   it("mint 2 NFTs", async () => {
     expect(await mintContract.totalSupply()).to.be.equal(0);
     const startId = await mintContract.mintId();
     const price = await mintContract.PRICE();
 
-    await tokensContract.mint(ownerAddress, 1, 2 * price);
+    await tokensContract.mint(ownerAddress, 1, price.mul(2));
 
     await mintContract.mint(2);
     expect(
@@ -69,7 +75,7 @@ describe("SpacePiratesBattleFieldMint", () => {
   it("should revert if tried to mint a third NFT", async () => {
     const price = await mintContract.PRICE();
 
-    await tokensContract.mint(ownerAddress, 1, 3 * price);
+    await tokensContract.mint(ownerAddress, 1, price.mul(3));
     await mintContract.mint(2);
     await expect(mintContract.mint(1)).to.be.revertedWith(
       "BattleFieldFirstCollection: mint quantity exceeds allowance for this address"
@@ -77,8 +83,7 @@ describe("SpacePiratesBattleFieldMint", () => {
   });
   it("should revert if not enough funds", async () => {
     const price = await mintContract.PRICE();
-
-    await tokensContract.mint(ownerAddress, 1, 2 * price - 1);
+    await tokensContract.mint(ownerAddress, 1, price.mul(2).sub(1));
 
     await expect(mintContract.mint(2)).to.be.reverted;
   });
@@ -147,7 +152,7 @@ describe("SpacePiratesBattleFieldMint", () => {
     const price = await mintContract.PRICE();
 
     await tokensContract.mint(ownerAddress, 1, price);
-    await expect(mintContract.mint(2)).to.be.revertedWith(
+    await expect(mintContract.mint(0)).to.be.revertedWith(
       "BattleFieldFirstCollection: need to mint at least 1 NFT"
     );
   });

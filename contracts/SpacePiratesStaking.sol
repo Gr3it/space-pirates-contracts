@@ -122,11 +122,10 @@ contract SpacePiratesStaking is ERC1155Holder, Ownable {
         emit StakingPoolUpdated(_pid, _rewardRate, _depositFee);
     }
 
-    function pendingRewards(uint256 _pid, address _user)
-        external
-        view
-        returns (uint256)
-    {
+    function pendingRewards(
+        uint256 _pid,
+        address _user
+    ) external view returns (uint256) {
         require(
             _pid < stakingPools.length,
             "SpacePiratesStaking: staking pool does not exists"

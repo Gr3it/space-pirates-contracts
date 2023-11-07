@@ -153,7 +153,7 @@ describe("SpacePiratesItemsMarketPlace", () => {
       [1, 2],
       1,
       BigNumber.from("1000"),
-      BigNumber.from("1672531200"),
+      BigNumber.from("16725312000"),
       uintMax120,
       0
     );
@@ -193,7 +193,7 @@ describe("SpacePiratesItemsMarketPlace", () => {
       0
     );
 
-    await marketPlace.buyItem(index, 2);
+    await marketPlace.buyItem(index, 3);
 
     await expect(marketPlace.buyItem(index, 1)).to.be.revertedWith(
       "SpacePiratesItemsMarketPlace: buy exceed available quantity"
