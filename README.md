@@ -9,10 +9,6 @@
 In the game Space Pirates, you are a pirate flying on your own galleon through the sky. Explore and create your team of familiars. Conquer lands and settle down your base. Spend time with your friends and engage with them in friendly battles.
 Collect objects, obtain the rarest titles in the galaxy and collect the best gadgets to power up your team.
 
-### How to contribute
-
-- [Contribute](./docs/contribute.md)
-
 ### Useful links
 
 - [Front-End Repository](https://github.com/Gr3it/space-pirates-frontend)
