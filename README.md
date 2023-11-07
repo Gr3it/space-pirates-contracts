@@ -1,32 +1,17 @@
 # DeFi Space Pirates
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/38867931/169622526-55e4dcbb-35c3-42c5-aa44-10a603157080.png" data-canonical-src="https://user-images.githubusercontent.com/38867931/169622526-55e4dcbb-35c3-42c5-aa44-10a603157080.png" width="300" />
+<img src="https://github.com/Gr3it/space-pirates-contracts/assets/79539455/37b18806-b9f5-402e-ae05-2403a573e16a" data-canonical-src="https://github.com/Gr3it/space-pirates-contracts/assets/79539455/37b18806-b9f5-402e-ae05-2403a573e16a" width="1280" />
 </div>
 
 <br/>
 
-DeFi Space Pirates is a platform built around the idea of an imaginary space world where DeFi pirates can interact by earning 2 tokens (Doubloons and Asteroids). The ecosystem consists of a DeFi and an Nft Game section.
-
-**We are looking for new team members to help us on this challenge. Contact us in the [**Discord Channel**](https://discord.gg/jfGUh6w6) if you are willing to join us.**
+n the game Space Pirates, you are a pirate flying on your own galleon through the sky. Explore and create your team of familiars. Conquer lands and settle down your base. Spend time with your friends and engage with them in friendly battles.
+Collect objects, obtain the rarest titles in the galaxy and collect the best gadgets to power up your team.
 
 ### Sections
 
-- [Read the roadmap](./docs/roadmap.md)
+- [Protocol Schema](https://user-images.githubusercontent.com/79539455/168427909-10ffca5b-da41-4d8b-92e4-230e1f8afa02.png)
+- [Protocol Docs](https://emanuele-zini.gitbook.io/space-pirates/)
+- [Old pitch deck](https://pitch.com/public/fa4ab34e-7b4a-49e8-aba5-bda6161fec46)
 - [Contribute](./docs/contribute.md)
-
-### Team
-
-- **Matteo Leonesi** - [Github](https://github.com/MatteoLeonesi)
-
-- **Emanuele Zini** - [Github](https://github.com/Gr3it)
-
-- **Yuri Paoloni** - [Github](https://github.com/yuripaoloni)
-
-**Support The Team ❤️ :** 0x56a73b9deB0d5186239116112Da386f4C3416520
-
-### Contacts
-
-- [**Discord Channel**](https://discord.gg/jfGUh6w6)
-
-- [**Twitter**](https://twitter.com/df_spacepirates)
