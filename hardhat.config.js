@@ -16,14 +16,10 @@ module.exports = {
     },
   },
   networks: {
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.WEB3_INFURA_PROJECT_ID}`,
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/${process.env.WEB3_INFURA_PROJECT_ID}`,
       accounts: [`${process.env.PRIVATE_KEY}`],
-    },
-    ropsten: {
-      url: `https://ropsten.infura.sio/v3/${process.env.WEB3_INFURA_PROJECT_ID}`,
-      accounts: [`${process.env.PRIVATE_KEY}`],
-    },
+    }
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
