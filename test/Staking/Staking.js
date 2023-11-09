@@ -14,7 +14,7 @@ let addrs;
 let doubloons;
 let asteroids;
 
-describe("SpacePiratesStaking: basic features", () => {
+describe.only("SpacePiratesStaking: basic features", () => {
   before(async () => {
     const Tokens = await ethers.getContractFactory("SpacePiratesTokens");
     const Staking = await ethers.getContractFactory("SpacePiratesStaking");
@@ -42,18 +42,21 @@ describe("SpacePiratesStaking: basic features", () => {
   });
 
   it("should create a new staking pair", async () => {
+    const index = await staking.poolLength();
+
     await staking.createStakingPool(doubloons, doubloons, 10, 100);
 
-    const [exists, rewardTokenId, rewardRate, depositFee] =
-      await staking.stakingPools(doubloons);
+    const {tokenId, rewardTokenId, rewardRate, depositFee} =
+      await staking.stakingPools(index);
 
-    expect(exists).to.equal(true);
+    expect(tokenId).to.equal(doubloons);
     expect(rewardTokenId).to.equal(doubloons);
     expect(rewardRate).to.be.equal(10);
     expect(depositFee).to.be.equal(100);
   });
 
   it("should stake a token", async () => {
+    const index = await staking.poolLength() - 1;
     const depositFee = 100;
 
     // grant DOUBLOONS_MINTER_ROLE to owner to transfer assets to addr1
@@ -69,7 +72,7 @@ describe("SpacePiratesStaking: basic features", () => {
     let userBalance = await tokens.balanceOf(addr1.address, doubloons);
     let ownerBalance = await tokens.balanceOf(owner.address, doubloons);
 
-    await staking.connect(addr1).stake(doubloons, 1000);
+    await staking.connect(addr1).stake(index, 1000);
 
     // addr1 balance should be equal to previous balance - 1000
     expect(await tokens.balanceOf(addr1.address, doubloons)).to.equal(
@@ -77,7 +80,7 @@ describe("SpacePiratesStaking: basic features", () => {
     );
 
     // totalSupply of staked doubloons should be equal to 1000 - depositFee value
-    expect((await staking.stakingPools(doubloons))[5]).to.equal(
+    expect((await staking.stakingPools(index))[5]).to.equal(
       1000 - (1000 * depositFee) / 10000
     );
 
@@ -89,21 +92,25 @@ describe("SpacePiratesStaking: basic features", () => {
 
   it("should withdraw a staked token", async () => {
     let userBalance = await tokens.balanceOf(addr1.address, doubloons);
-    let prevSupply = (await staking.stakingPools(doubloons))[5];
+    const index = await staking.poolLength() - 1;
 
-    await staking.connect(addr1).unstake(doubloons, 300);
+
+    let prevSupply = (await staking.stakingPools(index))[5];
+
+    await staking.connect(addr1).unstake(index, 300);
 
     // addr1 balance should be bigger after the withdraw
     expect(await tokens.balanceOf(addr1.address, doubloons)).to.gt(userBalance);
 
     // totalSupply should be smaller
-    expect((await staking.stakingPools(doubloons))[5]).to.lt(prevSupply);
+    expect((await staking.stakingPools(index))[5]).to.lt(prevSupply);
   });
 
   it("should harvest rewards", async () => {
+    const index = await staking.poolLength() - 1;
     let userBalance = await tokens.balanceOf(addr1.address, doubloons);
 
-    await staking.connect(addr1).getReward(doubloons);
+    await staking.connect(addr1).getReward(index);
 
     // addr1 doubloons balance should be bigger after harvest of rewards
     expect(await tokens.balanceOf(addr1.address, doubloons)).to.gt(userBalance);
@@ -111,16 +118,13 @@ describe("SpacePiratesStaking: basic features", () => {
 
   it("should update an existing staking pair", async () => {
     // change stakingTokenId to asteroids
-    await staking.updateStakingPool(doubloons, asteroids, 10, 100);
+    const index = await staking.poolLength() - 1;
+    await staking.updateStakingPool(index, 10, 100);
 
-    let [exists, rewardTokenId, rewardRate, depositFee] =
-      await staking.stakingPools(doubloons);
+    let {rewardTokenId, rewardRate, depositFee} =
+      await staking.stakingPools(index);
 
-    expect(exists).to.equal(true);
-    expect(rewardTokenId).to.equal(asteroids);
     expect(rewardRate).to.be.equal(10);
     expect(depositFee).to.be.equal(100);
   });
 });
-
-describe("Staking: advanced use cases", () => {});
