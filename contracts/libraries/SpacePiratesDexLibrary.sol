@@ -31,7 +31,7 @@ library SpacePiratesDexLibrary {
                             hex"ff",
                             factory,
                             keccak256(abi.encodePacked(token0, token1)),
-                            hex"a351fc001cc4b002bd0b5d16720fd490c335e1133f20186ae4814f59876c46dc" // init code hash generated using EVM solc 0.8.7(commit.e28d00a7) optimizer enabled and setted at 200 runs
+                            hex"b4a0a25c1cdc82f15547732af6b60ebf25bd6596dc86f2c6d63455a667dd4186" // init code hash generated using EVM solc 0.8.4(commit.e28d00a7) optimizer enabled and setted at 200 runs
                         )
                     )
                 )
