@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const { ethers } = require("hardhat");
 
@@ -76,27 +76,27 @@ async function main() {
   console.log("\nDeploying contracts...\n");
 
   const tokensContract = await TokensContract.deploy("testUri.com/token/");
-  await tokensContract.deployed()
+  await tokensContract.deployed();
   console.log("Space Pirates Tokens deployed to:", tokensContract.address);
 
   const stakingContract = await StakingContract.deploy(tokensContract.address);
-  await stakingContract.deployed()
+  await stakingContract.deployed();
   console.log("Space Pirates Staking deployed to:", stakingContract.address);
 
   const splitContract = await SplitContract.deploy(tokensContract.address);
-  await splitContract.deployed()
+  await splitContract.deployed();
   console.log("Asteroids Split Contract deployed to:", splitContract.address);
 
   const faucetContract = await FaucetContract.deploy(tokensContract.address);
-  await faucetContract.deployed()
+  await faucetContract.deployed();
   console.log("Faucet Contract deployed to:", faucetContract.address);
 
   const wrapperContract = await WrapperContract.deploy(tokensContract.address);
-  await wrapperContract.deployed()
+  await wrapperContract.deployed();
   console.log("Wrapper Contract deployed to:", wrapperContract.address);
 
   const factoryContract = await FactoryContract.deploy(tokensContract.address);
-  await factoryContract.deployed()
+  await factoryContract.deployed();
   console.log("Factory Contract deployed to:", factoryContract.address);
 
   const routerContract = await RouterContract.deploy(
@@ -104,23 +104,23 @@ async function main() {
     tokensContract.address,
     wrapperContract.address
   );
-  await routerContract.deployed()
+  await routerContract.deployed();
   console.log("Router Contract deployed to:", routerContract.address);
 
   const masterChefContract = await MasterChefContract.deploy(
     tokensContract.address,
     devAddress,
     feeAddress,
-    ethers.utils.parseUnits(doubloonsPerBlock,18),
+    ethers.utils.parseUnits(doubloonsPerBlock, 18),
     startBlock
   );
-  await masterChefContract.deployed()
+  await masterChefContract.deployed();
   console.log("MasterChef Contract deployed to:", masterChefContract.address);
 
   const questRedeemContract = await QuestRedeemContract.deploy(
     tokensContract.address
   );
-  await questRedeemContract.deployed()
+  await questRedeemContract.deployed();
   console.log(
     "Quest Redeem Contract deployed to:",
     questRedeemContract.address
@@ -131,26 +131,26 @@ async function main() {
     BFMintStart,
     BFMintDuration
   );
-  await battleFieldMintContract.deployed()
+  await battleFieldMintContract.deployed();
   console.log("BFMint Contract deployed to:", battleFieldMintContract.address);
 
   const itemsMarketPlace = await ItemsMarketPlace.deploy(
     tokensContract.address
   );
-  await itemsMarketPlace.deployed()
+  await itemsMarketPlace.deployed();
   console.log("Market Place Contract deployed to:", itemsMarketPlace.address);
 
   const nftContract = await NFTContract.deploy(
     "https://metadata.space-pirates-testnet.com/familiars/"
   );
-  await nftContract.deployed()
+  await nftContract.deployed();
   console.log("NFT Contract deployed to:", nftContract.address);
 
   const nftCollectionContract = await NFTCollectionContract.deploy(
     tokensContract.address,
     nftContract.address
   );
-  await nftCollectionContract.deployed()
+  await nftCollectionContract.deployed();
   console.log(
     "NFT Collection Factory Contract deployed to:",
     nftCollectionContract.address
@@ -160,7 +160,7 @@ async function main() {
     tokensContract.address,
     nftContract.address
   );
-  await nftStarterContract.deployed()
+  await nftStarterContract.deployed();
   console.log(
     "NFT Starter Collection Contract deployed to:",
     nftStarterContract.address
@@ -208,7 +208,7 @@ async function main() {
     nftContract: nftContract.address,
     nftCollectionContract: nftCollectionContract.address,
     nftStarterContract: nftStarterContract.address,
-  })
+  });
   fs.writeFileSync("constants.json", deployAddresses);
 }
 

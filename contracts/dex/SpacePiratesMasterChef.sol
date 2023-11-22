@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import "../libraries/SafeERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 
 import "../SpacePiratesTokens.sol";
 
@@ -20,7 +21,7 @@ import "../SpacePiratesTokens.sol";
 // distributed and the community can show to govern itself.
 //
 // Have fun reading it. Hopefully it's bug-free. God bless.
-contract SpacePiratesMasterChef is Ownable, ReentrancyGuard {
+contract SpacePiratesMasterChef is Ownable, ReentrancyGuard, ERC1155Holder {
     using SafeERC20 for IERC20;
 
     // Info of each user.

@@ -17,6 +17,7 @@ module.exports = async function masterChefContractSetup(
     ids.doubloons,
     ids.asteroids
   );
+  console.log(lpTokenAddress);
   masterChefContract.add(1000, lpTokenAddress, 0, false);
   console.log("    created doubloons and asteroids pool\n");
 };

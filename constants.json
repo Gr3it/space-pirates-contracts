@@ -6,7 +6,7 @@
   "wrapperContract": "0xb6B3db9765b2cA1BF7a794f5479E8D8baf821141",
   "factoryContract": "0xDdb1cAD3e6dE739b5921140cA1D3433BF642bFa1",
   "routerContract": "0x5490CF654748E11b702b7ab2f4d84c3355A6F495",
-  "masterChefContract": "0x00B9fD5027a553b2fce69321281d69FB1b6bf1FA",
+  "masterChefContract": "0x5ad9D38Cd280a5D962273bA4927A1caacD7B3406",
   "questRedeemContract": "0x6faABbceF3Dc52b11E7dE8C296D8eFFbe5aAd470",
   "battleFieldContract": "0x81f27dFEB9D404592A36129664217709c6108670",
   "itemsMarketPlace": "0x62B9a785C68DEf8B449aF5449Da000aeB461C8b6",
